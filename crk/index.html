@@ -1,1 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chef Rhi's Kitchen — Afro-Caribbean Pop-Ups &amp; Platters</title>
+<meta name="description" content="Bold Afro-Caribbean pop-ups, platters, and plates from Chef Rhi's Kitchen — made fresh, dropped often, based in Atlanta.">
+<link rel="icon" type="image/png" href="../media/shared/favicon-crk.png">
+<meta property="og:title" content="Chef Rhi's Kitchen — Afro-Caribbean Pop-Ups & Platters">
+<meta property="og:description" content="Bold Afro-Caribbean pop-ups, platters, and plates — made fresh, dropped often.">
+<meta property="og:image" content="https://c3jumpw.github.io/crk/media/crk/og-crk.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#173F35;
+    --forest-deep:#0E2D26;
+    --cream:#F5EBDD;
+    --gold:#B98B3B;
+    --terracotta:#B65B3A;
+    --ink:#232323;
+    --line: rgba(23,63,53,0.18);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    color:var(--forest);
+    margin:0;
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
 
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--terracotta); outline-offset:3px;}
+
+  /* ---------- Nav ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,235,221,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand svg{flex:none;}
+  .brand-name{font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:1.35rem; color:var(--forest);}
+  .brand-name b{font-style:normal; font-weight:700;}
+  .nav-links{display:flex; align-items:center; gap:34px;}
+  .nav-links a{font-size:0.95rem; color:var(--forest);}
+  .nav-links a:hover{color:var(--terracotta);}
+  .cta-pill{
+    background:var(--terracotta); color:var(--cream);
+    padding:10px 20px; border-radius:999px; font-size:0.92rem; font-weight:500;
+    white-space:nowrap;
+  }
+  .cta-pill:hover{background:#a24f31;}
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--forest); margin:5px 0;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:76px 0 96px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .eyebrow{font-size:0.92rem; color:var(--gold); margin-bottom:18px; letter-spacing:0.01em;}
+  .hero h1{font-size:clamp(2.4rem, 4.4vw, 3.6rem); max-width:11.5ch;}
+  .hero-sub{margin-top:22px; font-size:1.1rem; max-width:46ch; color:var(--forest-deep);}
+  .hero-actions{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .btn-primary{background:var(--terracotta); color:var(--cream); padding:14px 26px; border-radius:999px; font-weight:500; font-size:0.98rem;}
+  .btn-primary:hover{background:#a24f31;}
+  .btn-outline{border:1.5px solid var(--forest); color:var(--forest); padding:13px 24px; border-radius:999px; font-weight:500; font-size:0.98rem;}
+  .btn-outline:hover{background:var(--forest); color:var(--cream);}
+
+  .hero-art{position:relative;}
+  .hero-photo-frame{
+    position:relative; aspect-ratio: 4/5; overflow:hidden;
+    clip-path: polygon(8% 0%, 100% 0%, 100% 92%, 92% 100%, 0% 100%, 0% 8%);
+  }
+  .hero-photo-frame img{width:100%; height:100%; object-fit:cover; object-position: top center;}
+  .hero-block{
+    position:absolute; width:58%; aspect-ratio:1/1; background:var(--gold);
+    top:-14%; right:-10%; z-index:-1; border-radius:6px;
+  }
+  .photo-placeholder{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(155deg, var(--forest) 0%, var(--forest-deep) 100%);
+    position:relative; overflow:hidden;
+  }
+  .photo-placeholder img.wm{
+    position:absolute; width:70%; opacity:0.14; filter:grayscale(1) brightness(2.4);
+  }
+  .photo-placeholder .ph-label{
+    position:relative; color:rgba(245,235,221,0.75); font-family:'Fraunces', serif; font-style:italic;
+    font-size:0.98rem; text-align:center; padding:0 20px;
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:88px 0;}
+  .section-cream{background:var(--cream);}
+  .section-forest{background:var(--forest); color:var(--cream);}
+  .section-forest h2, .section-forest h3{color:var(--cream);}
+  .section-mist{background:#EFE4D2;}
+
+  .kicker{font-size:0.92rem; color:var(--terracotta); margin-bottom:14px;}
+  .section-forest .kicker{color:var(--gold);}
+  h2.section-title{font-size:clamp(1.9rem, 3vw, 2.5rem); max-width:16ch;}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;}
+  .about-photo{aspect-ratio:1/1; border-radius:6px; overflow:hidden;}
+  .about-photo img{width:100%; height:100%; object-fit:cover; object-position: 50% 20%;}
+  .about-quote{font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:1.5rem; color:var(--forest); max-width:24ch; line-height:1.35; margin-bottom:22px;}
+  .about-body{max-width:48ch; color:var(--forest-deep); font-size:1.03rem;}
+  .about-body + .about-body{margin-top:16px;}
+  .about-note{margin-top:22px; font-size:0.86rem; color:#6b6b6b; font-style:italic;}
+
+  /* ---------- Process ---------- */
+  .process-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:44px; margin-top:56px; position:relative;}
+  .process-step{position:relative; padding-top:8px;}
+  .process-num{
+    font-family:'Fraunces', serif; font-weight:700; font-size:4.2rem;
+    color:transparent; -webkit-text-stroke:1.4px rgba(23,63,53,0.28);
+    line-height:1; margin-bottom:6px; display:block;
+  }
+  .process-step h3{font-size:1.2rem; margin-bottom:10px;}
+  .process-step p{color:var(--forest-deep); font-size:0.98rem;}
+
+  /* ---------- Menu teaser ---------- */
+  .menu-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 64px; margin-top:48px;}
+  .menu-row{display:flex; justify-content:space-between; gap:16px; padding:18px 0; border-bottom:1px solid rgba(245,235,221,0.25);}
+  .menu-row .name{font-family:'Fraunces', serif; font-size:1.08rem; color:var(--cream);}
+  .menu-row .desc{font-size:0.88rem; color:rgba(245,235,221,0.7); margin-top:4px; max-width:32ch;}
+  .menu-row .price{font-family:'Fraunces', serif; font-size:1.08rem; color:var(--gold); white-space:nowrap;}
+  .menu-cta{margin-top:44px;}
+  .menu-cta a{border-bottom:1.5px solid var(--gold); padding-bottom:2px; font-size:0.98rem; color:var(--cream);}
+
+  /* ---------- Callout (cross-brand) ---------- */
+  .callout{
+    border-left:3px solid var(--terracotta);
+    padding:28px 32px; background:var(--cream);
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .callout p{max-width:56ch; color:var(--forest-deep); font-size:1rem;}
+  .callout strong{color:var(--forest);}
+  .callout a{font-weight:600; color:var(--forest); border-bottom:1.5px solid var(--forest); white-space:nowrap;}
+
+  /* ---------- Signup ---------- */
+  .signup-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  form.signup{display:grid; gap:16px; max-width:440px;}
+  .field label{display:block; font-size:0.85rem; color:var(--forest-deep); margin-bottom:6px;}
+  .field input, .field select{
+    width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:4px;
+    background:#fff; font-family:inherit; font-size:0.98rem; color:var(--ink);
+  }
+  .field input:focus, .field select:focus{border-color:var(--forest); outline:none;}
+  .signup .btn-primary{border:none; cursor:pointer; margin-top:4px; width:fit-content;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--forest-deep); color:rgba(245,235,221,0.85); padding:64px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px;}
+  footer h4{color:var(--cream); font-family:'Fraunces', serif; font-weight:600; font-size:1rem; margin-bottom:16px;}
+  footer .brand-name{color:var(--cream);}
+  .footer-blurb{font-size:0.92rem; max-width:34ch; margin-top:14px; color:rgba(245,235,221,0.65);}
+  footer ul{list-style:none; padding:0; margin:0; display:grid; gap:10px;}
+  footer a{font-size:0.92rem;}
+  footer a:hover{color:var(--gold);}
+  .footer-bottom{
+    margin-top:56px; padding-top:24px; border-top:1px solid rgba(245,235,221,0.15);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.82rem; color:rgba(245,235,221,0.5);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .nav-links{position:fixed; inset:64px 0 auto 0; background:var(--cream); flex-direction:column; align-items:flex-start; padding:20px 28px 28px; gap:20px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;}
+    .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .menu-toggle{display:block;}
+    .hero-grid, .about-grid, .signup-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+    .process-grid{grid-template-columns:1fr; gap:32px;}
+    .menu-grid{grid-template-columns:1fr; gap:0;}
+    .footer-grid{grid-template-columns:1fr; gap:32px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .nav-links{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="../media/shared/crk-logo.jpg" alt="Chef Rhi's Kitchen" style="height:38px; width:auto; border-radius:3px;">
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#popups">Pop-Ups</a>
+      <a href="#signup">Contact</a>
+      <a href="#signup" class="cta-pill">Join the list</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero section-cream">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Atlanta pop-up kitchen, Afro-Caribbean menu</p>
+        <h1>Every plate starts with a story.</h1>
+        <p class="hero-sub">Chef Rhi turns bold Afro-Caribbean flavor into pop-up drops, platters, and made-to-order plates — the kind of food people plan their week around.</p>
+        <div class="hero-actions">
+          <a href="#popups" class="btn-primary">See the next pop-up</a>
+          <a href="#menu" class="btn-outline">Order a platter</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-block" aria-hidden="true"></div>
+        <div class="hero-photo-frame">
+          <!-- Placeholder until real hero photography (item #5 in the shot list) is shot and uploaded to media/crk/home-hero.jpg -->
+          <div class="photo-placeholder">
+            <img class="wm" src="../media/shared/crk-logo.jpg" alt="" aria-hidden="true">
+            <p class="ph-label">Hero photography<br>coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section-mist" id="about">
+    <div class="wrap about-grid">
+      <div class="about-photo">
+        <!-- Placeholder until founder portrait (item #6 in the shot list) is shot and uploaded to media/crk/founder-portrait-02.jpg -->
+        <div class="photo-placeholder">
+          <img class="wm" src="../media/shared/crk-logo.jpg" alt="" aria-hidden="true">
+          <p class="ph-label">Portrait<br>coming soon</p>
+        </div>
+      </div>
+      <div>
+        <p class="kicker">Meet Chef Rhi</p>
+        <p class="about-quote">"I cook the way my family always fed people — enough for who's coming, and a little extra for who shows up anyway."</p>
+        <p class="about-body">Chef Rhi's Kitchen started the way most good food businesses do: with people asking when the next batch was ready. What began as oxtail for friends turned into pop-up drops across Atlanta, built on Afro- and Caribbean-inspired recipes passed down and pushed forward.</p>
+        <p class="about-body">Every menu is small enough to stay personal and consistent enough to be worth the wait.</p>
+        <p class="about-note">Founder-story copy — placeholder for Rhi to personalize with her own history and voice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-cream" id="popups">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2 class="section-title">A simple rhythm, dropped when the flavor's ready.</h2>
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Announce</h3>
+          <p>New menus and pop-up dates go out on Instagram and email first — always before anywhere else.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Reserve</h3>
+          <p>Order your plate or platter before the cutoff. Quantities are limited because everything's made fresh, not stockpiled.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Pick up</h3>
+          <p>Swing by pickup at the announced time and place. Ask about drop-off if you're feeding a bigger group.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU TEASER -->
+  <section class="section-forest" id="menu">
+    <div class="wrap">
+      <p class="kicker">On the menu</p>
+      <h2 class="section-title">Known for the oxtail. Loved for everything next to it.</h2>
+      <div class="menu-grid">
+        <div>
+          <div class="menu-row">
+            <div><div class="name">Oxtail Platter</div><div class="desc">Slow-braised, fall-off-the-bone. Feeds a table, not just a plate.</div></div>
+            <div class="price">$175+</div>
+          </div>
+          <div class="menu-row">
+            <div><div class="name">Jerk Chicken Platter</div><div class="desc">Smoky, slow-grilled, built for sharing.</div></div>
+            <div class="price">$115+</div>
+          </div>
+        </div>
+        <div>
+          <div class="menu-row">
+            <div><div class="name">Rasta Pasta</div><div class="desc">Caribbean spice meets comfort-food pasta.</div></div>
+            <div class="price">$95</div>
+          </div>
+          <div class="menu-row">
+            <div><div class="name">Rice &amp; Peas / Mac &amp; Cheese</div><div class="desc">The sides people order extra of, every time.</div></div>
+            <div class="price">$38–42</div>
+          </div>
+        </div>
+      </div>
+      <p class="menu-cta"><a href="#">See the full menu</a></p>
+    </div>
+  </section>
+
+  <!-- CROSS-BRAND CALLOUT -->
+  <section class="section-mist">
+    <div class="wrap">
+      <div class="callout">
+        <p><strong>Planning something bigger</strong> — a wedding, a corporate event, a milestone the whole family's coming to? That's a different kind of job.</p>
+        <a href="https://c3jumpw.github.io/crk/palate-plan/">Meet Palate Plan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNUP -->
+  <section class="section-cream" id="signup">
+    <div class="wrap signup-grid">
+      <div>
+        <p class="kicker">Stay in the loop</p>
+        <h2 class="section-title">Get the next drop before anyone else does.</h2>
+        <p class="hero-sub" style="margin-top:18px;">First name, email, and one question — that's it. No spam, just menus, pop-up dates, and the occasional giveaway.</p>
+      </div>
+      <form class="signup" onsubmit="return false;">
+        <div class="field">
+          <label for="fname">First name</label>
+          <input id="fname" type="text" placeholder="Your first name">
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" type="email" placeholder="you@email.com">
+        </div>
+        <div class="field">
+          <label for="interest">What are you interested in?</label>
+          <select id="interest">
+            <option>Pop-up drops</option>
+            <option>A custom order</option>
+            <option>Just here for the food</option>
+          </select>
+        </div>
+        <button class="btn-primary" type="submit">Join the list</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <img src="../media/shared/crk-logo.jpg" alt="Chef Rhi's Kitchen" style="height:34px; width:auto; border-radius:3px;">
+      <p class="footer-blurb">Afro-Caribbean pop-ups, platters, and plates — made fresh, dropped often, based in Atlanta.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#popups">Pop-Ups</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#signup">Join the list</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Chef Rhi's Kitchen</span>
+    <span>Atlanta, GA</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+</script>
+
+</body>
+</html>

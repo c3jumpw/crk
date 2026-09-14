@@ -1,1 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palate Plan — The Food Experience Partner for Event Planners</title>
+<meta name="description" content="Palate Plan runs the full culinary operation behind your event — menu, setup, service, and cleanup — so food becomes the highlight, not the hazard.">
+<link rel="icon" type="image/png" href="../media/shared/favicon-palate-plan.png">
+<meta property="og:title" content="Palate Plan — The Food Experience Partner for Event Planners">
+<meta property="og:description" content="We run the full culinary operation behind your event, so food becomes the highlight, not the hazard.">
+<meta property="og:image" content="https://c3jumpw.github.io/crk/media/palate-plan/og-palate-plan.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#173F35;
+    --forest-deep:#0E2D26;
+    --cream:#F5EBDD;
+    --mist:#EFE6D8;
+    --ink:#1B1B1B;
+    --sub: #55605C;
+    --line: rgba(23,63,53,0.16);
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Archivo', sans-serif; color:var(--forest);
+    margin:0; font-weight:700; line-height:1.1; letter-spacing:-0.015em;
+  }
+  p{margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--forest); outline-offset:3px;}
 
+  /* ---------- Nav ---------- */
+  .topbar{position:sticky; top:0; z-index:50; background:rgba(245,235,221,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:var(--maxw); margin:0 auto;}
+  .brand img{height:26px; width:auto;}
+  .nav-links{display:flex; align-items:center; gap:34px;}
+  .nav-links a{font-size:0.95rem; color:var(--forest); font-weight:500;}
+  .nav-links a:hover{color:var(--forest-deep); text-decoration:underline; text-underline-offset:4px;}
+  .cta-solid{background:var(--forest); color:var(--cream); padding:11px 22px; border-radius:4px; font-size:0.92rem; font-weight:600;}
+  .cta-solid:hover{background:var(--forest-deep);}
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-toggle span{display:block; width:22px; height:2px; background:var(--forest); margin:5px 0;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:80px 0 100px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;}
+  .eyebrow{font-size:0.92rem; color:var(--sub); margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.3rem, 4vw, 3.3rem); max-width:13ch;}
+  .hero-sub{margin-top:22px; font-size:1.08rem; max-width:44ch; color:var(--forest-deep);}
+  .hero-actions{display:flex; align-items:center; gap:28px; margin-top:34px; flex-wrap:wrap;}
+  .btn-primary{background:var(--forest); color:var(--cream); padding:14px 26px; border-radius:4px; font-weight:600; font-size:0.98rem;}
+  .btn-primary:hover{background:var(--forest-deep);}
+  .link-quiet{font-weight:600; font-size:0.98rem; color:var(--forest); border-bottom:1.5px solid var(--forest); padding-bottom:2px;}
+
+  /* ---------- Pipeline diagram (hero + how-it-works) ---------- */
+  .pipeline-vert{display:flex; flex-direction:column; gap:0; position:relative;}
+  .pnode{display:flex; align-items:center; gap:16px; padding:14px 0; position:relative;}
+  .pnode:not(:last-child)::after{
+    content:''; position:absolute; left:14px; top:44px; bottom:-14px; width:1.5px; background:var(--line);
+  }
+  .picon{
+    width:30px; height:30px; border-radius:50%; border:1.5px solid var(--forest); flex:none;
+    display:flex; align-items:center; justify-content:center; background:var(--cream); z-index:1;
+  }
+  .picon svg{width:14px; height:14px;}
+  .plabel{font-weight:600; color:var(--forest); font-size:1.02rem;}
+  .pdesc{font-size:0.88rem; color:var(--sub); margin-top:2px;}
+
+  /* ---------- Section shells ---------- */
+  section{padding:96px 0;}
+  .section-cream{background:var(--cream);}
+  .section-mist{background:var(--mist);}
+  .section-forest{background:var(--forest); color:var(--cream);}
+  .section-forest h2{color:var(--cream);}
+  .kicker{font-size:0.9rem; color:var(--sub); margin-bottom:14px; font-weight:500;}
+  .section-forest .kicker{color:rgba(245,235,221,0.65);}
+  h2.section-title{font-size:clamp(1.8rem,2.8vw,2.35rem); max-width:20ch;}
+
+  /* ---------- Problem section ---------- */
+  .problem-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .problem-body{font-size:1.05rem; color:var(--forest-deep); max-width:48ch;}
+  .problem-body + .problem-body{margin-top:16px;}
+
+  /* ---------- How it works (horizontal) ---------- */
+  .steps-row{display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:56px; position:relative;}
+  .steps-row::before{content:''; position:absolute; top:15px; left:5%; right:5%; height:1.5px; background:var(--line);}
+  .step-col{position:relative; padding-top:0; text-align:left;}
+  .step-col .picon{margin-bottom:16px;}
+  .step-col h3{font-size:1.02rem; margin-bottom:8px;}
+  .step-col p{font-size:0.86rem; color:var(--sub); max-width:22ch;}
+
+  /* ---------- Built for planners (alternating rows) ---------- */
+  .benefit-row{display:grid; grid-template-columns:0.55fr 1.45fr; gap:40px; padding:28px 0; border-top:1px solid var(--line);}
+  .benefit-row:last-child{border-bottom:1px solid var(--line);}
+  .benefit-row h3{font-size:1.1rem; color:var(--forest);}
+  .benefit-row p{font-size:0.98rem; color:var(--forest-deep); max-width:52ch;}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{text-align:left;}
+  .cta-band h2{max-width:18ch;}
+  .cta-path{display:flex; gap:34px; margin:32px 0 40px; flex-wrap:wrap;}
+  .cta-path span{font-size:0.95rem; color:rgba(245,235,221,0.75);}
+  .cta-path strong{color:var(--cream); font-weight:600;}
+  .cta-band .btn-primary{background:var(--cream); color:var(--forest);}
+  .cta-band .btn-primary:hover{background:#fff;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--mist); padding:56px 0 28px; border-top:1px solid var(--line);}
+  .footer-top{display:flex; justify-content:space-between; align-items:flex-start; gap:32px; flex-wrap:wrap;}
+  footer .brand img{height:22px;}
+  .footer-note{font-size:0.92rem; color:var(--sub); max-width:44ch; margin-top:14px;}
+  .footer-note a{font-weight:600; color:var(--forest); border-bottom:1.5px solid var(--forest);}
+  .footer-links{display:flex; gap:28px;}
+  .footer-links a{font-size:0.92rem; color:var(--forest);}
+  .footer-bottom{margin-top:44px; padding-top:20px; border-top:1px solid var(--line); font-size:0.82rem; color:var(--sub); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .nav-links{position:fixed; inset:60px 0 auto 0; background:var(--cream); flex-direction:column; align-items:flex-start; padding:20px 28px 28px; gap:20px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;}
+    .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .menu-toggle{display:block;}
+    .hero-grid, .problem-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+    .steps-row{grid-template-columns:1fr; gap:28px;}
+    .steps-row::before{display:none;}
+    .benefit-row{grid-template-columns:1fr; gap:10px;}
+    .footer-top{flex-direction:column;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .nav-links{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="../media/shared/palate-plan-logo.jpg" alt="Palate Plan">
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#how">How it works</a>
+      <a href="#planners">For planners</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="cta-solid">Start an inquiry</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero section-cream">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Event food operations, handled</p>
+        <h1>The food experience partner for event planners.</h1>
+        <p class="hero-sub">Palate Plan runs the full culinary operation behind your event — menu, setup, service, and cleanup — so food becomes the highlight, not the hazard.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Start an inquiry</a>
+          <a href="#how" class="link-quiet">See how it works</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="pipeline-vert">
+          <div class="pnode">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+            <div><div class="plabel">Vision</div><div class="pdesc">Menu direction fit to your event</div></div>
+          </div>
+          <div class="pnode">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+            <div><div class="plabel">Menu</div><div class="pdesc">Afro-Caribbean dishes, built to scale</div></div>
+          </div>
+          <div class="pnode">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+            <div><div class="plabel">Setup</div><div class="pdesc">Stations, displays, and timing planned</div></div>
+          </div>
+          <div class="pnode">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+            <div><div class="plabel">Service</div><div class="pdesc">Staffed, hosted, and replenished</div></div>
+          </div>
+          <div class="pnode">
+            <span class="picon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="#173F35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="plabel">Cleanup</div><div class="pdesc">Closed out, handed back, done</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section-mist">
+    <div class="wrap problem-grid">
+      <div>
+        <p class="kicker">Why this exists</p>
+        <h2 class="section-title">Catering handles the food. Palate Plan handles everything else.</h2>
+      </div>
+      <div>
+        <p class="problem-body">A general event planner manages vendors, décor, and the schedule — but the food side has its own moving parts: menu strategy, dietary coordination, timing, setup, staffing, presentation, and breakdown.</p>
+        <p class="problem-body">Left unmanaged, that's exactly where events lose time and goodwill. Palate Plan takes that entire piece off your plate, with one team accountable for how it runs from first bite to last dish cleared.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-cream" id="how">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2 class="section-title">One process, five stages, one team accountable for all of it.</h2>
+      <div class="steps-row">
+        <div class="step-col">
+          <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+          <h3>Vision</h3>
+          <p>Discovery on guest count, budget, and the event's shape.</p>
+        </div>
+        <div class="step-col">
+          <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+          <h3>Menu</h3>
+          <p>Afro-Caribbean-inspired dishes matched to the occasion.</p>
+        </div>
+        <div class="step-col">
+          <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+          <h3>Setup</h3>
+          <p>Stations, displays, and hot/cold holding, planned in advance.</p>
+        </div>
+        <div class="step-col">
+          <span class="picon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#173F35" stroke-width="1.4"/></svg></span>
+          <h3>Service</h3>
+          <p>Trained staff on-site, guest-facing and replenishing all night.</p>
+        </div>
+        <div class="step-col">
+          <span class="picon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 7" stroke="#173F35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Cleanup</h3>
+          <p>Breakdown and venue handoff, on the terms you agreed to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR PLANNERS -->
+  <section class="section-mist" id="planners">
+    <div class="wrap">
+      <p class="kicker">Built for planners</p>
+      <h2 class="section-title">What working with Palate Plan actually changes.</h2>
+      <div style="margin-top:40px;">
+        <div class="benefit-row">
+          <h3>One accountable partner</h3>
+          <p>No coordinating between a caterer, a rental company, and a serving crew separately — Palate Plan owns the whole food operation as one line item.</p>
+        </div>
+        <div class="benefit-row">
+          <h3>Presentation that fits</h3>
+          <p>Displays, plating, and stations styled to match the event's look, not a default buffet setup dropped in regardless of the room.</p>
+        </div>
+        <div class="benefit-row">
+          <h3>Professional staffing</h3>
+          <p>Trained service staff on-site, with a single point of coordination for the planner throughout the event.</p>
+        </div>
+        <div class="benefit-row">
+          <h3>Less last-minute stress</h3>
+          <p>Dietary questions, replenishment, and timing issues get handled by the food team directly — not routed back through you.</p>
+        </div>
+        <div class="benefit-row">
+          <h3>A flavor guests remember</h3>
+          <p>Bold Afro-Caribbean menus give the event a distinct culinary identity, not an interchangeable catering spread.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-forest" id="contact">
+    <div class="wrap cta-band">
+      <p class="kicker">Get started</p>
+      <h2>Every plan starts with a conversation.</h2>
+      <div class="cta-path">
+        <span><strong>1. Discovery call</strong> — tell us about the event</span>
+        <span><strong>2. Proposal</strong> — menu, staffing, and pricing scoped</span>
+        <span><strong>3. Confirmed</strong> — the food is handled</span>
+      </div>
+      <a href="#" class="btn-primary">Start an inquiry</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="brand"><img src="../media/shared/palate-plan-logo.jpg" alt="Palate Plan"></a>
+        <p class="footer-note">Planning something smaller — a birthday, a small gathering? Visit <a href="https://c3jumpw.github.io/crk/crk/">Chef Rhi's Kitchen</a> for plates, platters, and pop-ups.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#planners">For planners</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Palate Plan</span>
+      <span>Atlanta, GA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+  }));
+</script>
+
+</body>
+</html>
